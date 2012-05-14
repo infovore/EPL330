@@ -1,0 +1,102 @@
+Available commands:
+  ! : Access to kernel commands
+  ?, HLP: Online Help
+  AFF: Viewing immediate message
+  TUE: Managing Authorization of passage
+  CDA: Computation of time
+  CLR: Erasing all programs give
+  NECK: Set the number of columns and other parameters
+  DAT, HRE: Reading or changing the date or time
+  DCH, DFR: Restart ("reset")
+  OF: Image Management
+  ECO Mode for Energy
+  EMS: Online Editing of an existing message
+  ETA: Status Summary of the newspaper
+  EXI: Closing the Console
+  FNL: Lists the fonts available
+  HLT, TST, RUN: Stop, test development and revitalization of the journal
+  MES, MGS: Recording Messages
+  APL, COP: Retrieving messages
+  MDM: Dialogue Direct console <-> Modem
+  PLA, PLS, PLE: Managing time zones
+  SCR: Read a snapshot of the current view
+  SET: Sets or displays parameter
+  TMP: Display of measured temperatures
+  ZON: Definition of display areas
+
+Message format:
+  The following characters are control codes interpreted as follows:
+    `(Grave accent only) introduced an extension code;
+    a, b, c: time to stop and flashing;
+    d, i, q, v: graphics;
+    e, s: effect of entry or exit;
+    g: font selection;
+    h, j, t: time, date (day) temperature;
+    k: delay;
+    m, p: modes and horizontal position;
+    n: lag vertical;
+    r, f: end of rehearsal and repetition;
+    u: big day
+    w: negative;
+    x, |: generic terminator ("|" unless the first character);
+    y, z: insertion of single columns;
+    {,}: Start and end of lowercase;
+    |: Advanced prefix syntax if the first character.
+  Any character other than a lower case letter or a special code cited
+  is displayed literally. Accented characters must be sent in
+  respecting the encoding used (preferably "Windows 1252", see command
+  "SET X" and configure your terminal).
+  Type "M e" followed by the code for details, in particular, see "M e |" for
+  advanced syntax.
+
+---
+Commandes disponibles :
+  !             : Accés aux commandes du noyau
+  ?, HLP        : Aide en ligne
+  AFF           : Affichage d'un message immédiat
+  AUT           : Gestion des autorisations de passage
+  CDA           : Calcul de date
+  CLR           : Effacement de toutes les donn?es programm?es
+  COL           : D?finition du nombre de colonnes et autres param?tres
+  DAT, HRE      : Lecture ou modification de la date ou de l'heure
+  DCH, DFR      : Red?marrage ("reset")
+  DES           : Gestion des images
+  ECO           : Mode d'?conomie d'?nergie
+  EMS           : Edition en ligne d'un message existant
+  ETA           : R?sum? de l'?tat du journal
+  EXI           : Fermeture de la console
+  FNL           : Listes des polices disponibles
+  HLT, TST, RUN : Arr?t, mise en test et relance du journal
+  MES, MSG      : Enregistrement de messages
+  APL, COP      : R?cup?ration de messages
+  MDM           : Dialogue direct console <-> modem
+  PLA, PLS, PLE : Gestion des plages horaires
+  SCR           : Lire un instantan? de l'affichage en cours
+  SET           : D?finition ou affichage de param?tre
+  TMP           : Affichage des temp?ratures mesur?es
+  ZON           : D?finition des zones d'affichage
+
+Structure des messages :
+  Les caract?res suivants sont des codes de commande interpr?t?s comme suit :
+    `          : (accent grave seul) introduit un code d'extension ;
+    a, b, c    : temps d'arr?t et clignotement ;
+    d, i, q, v : graphisme ;
+    e, s       : effet d'entr?e ou de sortie ;
+    g          : choix de la police ;
+    h, j, t    : heure, date (jour), temp?rature ;
+    k          : cadence de d?filement ;
+    m, p       : modes et position horizontale ;
+    n          : d?calage vertical ;
+    r, f       : r?p?tition et fin de r?p?tition ;
+    u          : grand jour
+    w          : n?gatif ;
+    x, |       : terminateur g?n?rique ("|" sauf si 1er caract?re) ;
+    y, z       : insertion de colonnes simples ;
+    {, }       : d?but et fin de minuscules ;
+    |          : pr?fixe de syntaxe avanc?e si 1er caract?re.
+  Tout caract?re autre qu'une lettre minuscule ou un des codes sp?ciaux cit?s
+  s'affiche litt?ralement. Les caract?res accentu?s doivent ?tre envoy?s en
+  respectant l'encodage utilis? (de pr?f?rence "Windows 1252" ; voir commande
+  "SET X" et configuration de votre terminal).
+  Tapez "? M" suivi du code pour d?tails ; en particulier, voir "? M |" pour
+  syntaxe avanc?e.
