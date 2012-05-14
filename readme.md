@@ -2,25 +2,16 @@
 
 Initialise:
 
-gl = EPL330.new("192.168.5.60")
+epl = EPL330.new("192.168.5.60")
 
 Simple example:
 
-gl.loop_text("Hello, world!", :entry => :left, :exit => :right)
+epl.loop_text("Hello, world!", :entry => :left, :exit => :right)
 
 Complex example:
 
-line1 = gl.string_for_text("Hide&Seek", 
-                           :entry => :top, 
-                           :exit => :bottom, 
-                           :pause => 3)
-line2 = gl.string_for_text("present", 
-                           :entry => :left, 
-                           :exit => :curtain, 
-                           :pause => 2)
-line3 = gl.string_for_text("The Building Is", 
-                           :entry => :ends, 
-                           :exit => :bottom, 
-                           :pause => 3)
+line1 = epl.string_for_text("Top to bottom", :entry => :top, :exit => :bottom, :pause => 3)
+line2 = epl.string_for_text("Left and vanish", :entry => :left, :exit => :curtain, :pause => 2)
+line3 = epl.string_for_text("Merge and drop", :entry => :ends, :exit => :bottom, :pause => 3)
 strings = [line1, line2, line3]
-gl.loop_strings(strings)
+epl.loop_strings(strings)
