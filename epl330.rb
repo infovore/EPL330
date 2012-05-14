@@ -1,10 +1,10 @@
 require 'net/telnet'
 
-class GaiteLed_Exception < Exception
+class EPL330_Exception < Exception
 
 end
 
-class GaiteLed
+class EPL330
   attr_reader :ledstrip
 
   def initialize(ip)
