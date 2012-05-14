@@ -18,7 +18,7 @@ class EPL330
     return_value = @ledstrip.cmd("#{command}")
     if
       return_value =~ /erreurs/
-      raise GaiteLed_Exception, return_value
+      raise EPL330_Exception, return_value
     else
       return_value
     end
