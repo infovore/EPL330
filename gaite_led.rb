@@ -15,7 +15,21 @@ class GaiteLed
   end
 
   def send_command(command)
-    @ledstrip.cmd("#{command}")
+    return_value = @ledstrip.cmd("#{command}")
+    if
+      return_value =~ /erreurs/
+      raise GaiteLed_Exception, return_value
+    else
+      return_value
+    end
+  end
+
+  def set(key, value)
+    @ledstrip.cmd("SET #{key} = #{value}")
+  end
+
+  def get(key)
+    @ledstrip.cmd("SET #{key}")
   end
 
   def loop_text(text, options={})
@@ -30,13 +44,17 @@ class GaiteLed
       when :right
         entry_string = "ed"
       when :ends
-        entry_string = "eE"
+        entry_string = "ee"
       when :center
         entry_string = "ec"
       when :immediate
         entry_string = "ei"
       when :curtain
         entry_string = "er"
+      when :top
+        entry_string = "eh"
+      when :bottom
+        entry_string = "eb"
       end
     end
 
@@ -47,13 +65,17 @@ class GaiteLed
       when :right
         exit_string = "sd"
       when :ends
-        exit_string = "sE"
+        exit_string = "se"
       when :center
         exit_string = "sc"
       when :immediate
         exit_string = "si"
-      when :curtain
+      when  :curtain
         exit_string = "sr"
+      when :top
+        exit_string = "sh"
+      when :bottom
+        exit_string = "sb"
       end
     end
 
@@ -69,8 +91,12 @@ class GaiteLed
       end
     end
 
+    if options.has_key?(:pause)
+      pause_string = "a#{options[:pause]}"
+    end
+
     actual_text = process_text(text)
-    send_command("AFF #{pos_string}#{entry_string}#{actual_text}#{exit_string}")
+    send_command("AFF #{pos_string}#{entry_string}#{actual_text}#{pause_string}#{exit_string}")
   end
 
   def process_text(text)
