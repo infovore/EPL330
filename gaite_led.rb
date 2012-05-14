@@ -32,7 +32,7 @@ class GaiteLed
     @ledstrip.cmd("SET #{key}")
   end
 
-  def loop_text(text, options={})
+  def string_for_text(text, options={})
     entry_string = ""
     exit_string = ""
     pos_string = ""
@@ -96,7 +96,15 @@ class GaiteLed
     end
 
     actual_text = process_text(text)
-    send_command("AFF #{pos_string}#{entry_string}#{actual_text}#{pause_string}#{exit_string}")
+    "#{pos_string}#{entry_string}#{actual_text}#{pause_string}#{exit_string}"
+  end
+
+  def loop_text(text,options)
+    send_command("AFF #{string_for_text(text, options)}")
+  end
+
+  def loop_strings(strings)
+    send_command("AFF #{strings.join}")
   end
 
   def process_text(text)
