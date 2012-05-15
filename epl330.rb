@@ -1,8 +1,6 @@
 require 'net/telnet'
 
-class EPL330_Exception < Exception
-
-end
+class EPL330_Exception < Exception; end
 
 class EPL330
   attr_reader :ledstrip
@@ -25,11 +23,12 @@ class EPL330
   end
 
   def set(key, value)
-    @ledstrip.cmd("SET #{key} = #{value}")
+    @ledstrip.send_command("SET #{key} = #{value}")
   end
 
   def get(key)
-    @ledstrip.cmd("SET #{key}")
+    # yes, SET with no parameters is a GET
+    @ledstrip.send_command("SET #{key}")
   end
 
   def string_for_text(text, options={})
