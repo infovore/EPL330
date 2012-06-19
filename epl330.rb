@@ -3,6 +3,7 @@ require 'net/telnet'
 class EPL330_Exception < Exception; end
 
 class EPL330
+  LOCATIONS = %w{left right ends center immediate curtain top bottom}
   attr_reader :ledstrip
 
   def initialize(ip)
@@ -14,8 +15,8 @@ class EPL330
 
   def send_command(command)
     return_value = @ledstrip.cmd("#{command}")
-    if
-      return_value =~ /erreurs/
+    @ledstrip.close
+    if return_value.force_encoding("ASCII-8BIT") =~ /erreurs/
       raise EPL330_Exception, return_value
     else
       return_value
@@ -23,13 +24,14 @@ class EPL330
   end
 
   def set(key, value)
-    @ledstrip.send_command("SET #{key} = #{value}")
+    send_command("SET #{key} = #{value}")
   end
 
   def get(key)
     # yes, SET with no parameters is a GET
-    @ledstrip.send_command("SET #{key}")
+    send_command("SET #{key}")
   end
+
 
   def string_for_text(text, options={})
     entry_string = ""
@@ -111,7 +113,7 @@ class EPL330
     lowercaseflag = false
     output_text = ""
     characters.each do |c|
-      if c =~ /[a-z]/
+      if c.force_encoding('ASCII-8BIT') =~ /[a-z]/
         unless lowercaseflag
           output_text << "{{"
           lowercaseflag = true
